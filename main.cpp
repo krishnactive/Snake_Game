@@ -1,7 +1,7 @@
 
 #include<GL/gl.h>
 #include<GL/glu.h>
-
+#include<iostream>
 #include<GL/glut.h>
 #include "game.h"
 #define COLUMNS 40
