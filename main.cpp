@@ -1,13 +1,20 @@
-
+#include <windows.h>
 #include<GL/gl.h>
 #include<GL/glu.h>
-#include<iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include<GL/glut.h>
 #include "game.h"
+#include<iostream>
 #define COLUMNS 40
 #define ROWS 40
 #define FPS 10
+using namespace std;
 extern short sDirection;
+bool gameOver = false;
+
+int score = 0;
 
 void init(){
     glClearColor(0.0,0.0,0.0,1.0);
@@ -37,8 +44,13 @@ void display_callback(){
     glClear(GL_COLOR_BUFFER_BIT);
     drawGrid();
     drawSnake();
+    drawFood();
     glutSwapBuffers();
-
+    if (gameOver) {
+    string sc = "Your score: " + to_string(score);
+    MessageBox(NULL, sc.c_str(), "Game Over", MB_OK | MB_ICONINFORMATION);
+    exit(0);
+}
 
 
 }
